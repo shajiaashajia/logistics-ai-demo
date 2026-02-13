@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>物流 AI 调度系统 Demo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>物流 AI 调度系统</h1>
+    <p class="subtitle">输入订单与车辆后，系统会自动计算最优分配，并给出可解释结果。</p>
+
+    <section class="panel actions">
+      <button id="loadExample">加载示例数据</button>
+      <button id="runSchedule" class="primary">执行 AI 调度</button>
+    </section>
+
+    <section class="kpi-grid">
+      <article class="kpi"><span>订单总数</span><strong id="kpiTotal">0</strong></article>
+      <article class="kpi"><span>已分配</span><strong id="kpiAssigned">0</strong></article>
+      <article class="kpi"><span>未分配</span><strong id="kpiUnassigned">0</strong></article>
+      <article class="kpi"><span>调度得分</span><strong id="kpiScore">0</strong></article>
+    </section>
+
+    <section class="grid">
+      <div class="panel">
+        <h2>订单 (JSON)</h2>
+        <textarea id="ordersInput"></textarea>
+      </div>
+      <div class="panel">
+        <h2>车辆 (JSON)</h2>
+        <textarea id="vehiclesInput"></textarea>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>分配明细</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>订单ID</th><th>车辆ID</th><th>ETA(h)</th><th>里程(km)</th><th>得分</th><th>超时</th>
+          </tr>
+        </thead>
+        <tbody id="assignmentRows"></tbody>
+      </table>
+      <pre id="result">等待执行...</pre>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
